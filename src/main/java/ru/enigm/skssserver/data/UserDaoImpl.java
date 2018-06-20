@@ -2,11 +2,7 @@ package ru.enigm.skssserver.data;
 
 import ru.enigm.skssserver.model.User;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 /**
  * Implementation of {@link UserDao}
@@ -15,22 +11,25 @@ import java.sql.Statement;
  */
 public class UserDaoImpl implements UserDao {
 
-    private DataSource dataSource = DatasourceFactory.getMysqlDatasource();
+    private static final String SELECT_USER_SQL = "SELECT * FROM users WHERE name = ?";
+    private static final String NAME_COLUMN = "name";
+    private static final String PASSWORD_COLUMN = "password";
 
     @Override
     public User getUserByUsername(String username) {
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement statement = null;
         ResultSet resultSet = null;
         User user = null;
 
         try {
-            connection = dataSource.getConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery("select * from users where name = " + username);
+            connection = DatasourceFactory.getMysqlDatasource().getConnection();
+            statement = connection.prepareStatement(SELECT_USER_SQL);
+            statement.setString(1, username);
+            resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                user = new User(resultSet.getString("name"), resultSet.getString("password"));
+                user = new User(resultSet.getString(NAME_COLUMN), resultSet.getString(PASSWORD_COLUMN));
             }
         } catch (SQLException e) {
             e.printStackTrace();

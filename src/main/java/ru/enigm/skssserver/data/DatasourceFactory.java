@@ -1,10 +1,10 @@
 package ru.enigm.skssserver.data;
 
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import com.mysql.cj.jdbc.MysqlDataSource;
 
 import javax.sql.DataSource;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class DatasourceFactory {
@@ -16,12 +16,12 @@ public class DatasourceFactory {
     public static DataSource getMysqlDatasource() {
 
         Properties properties = new Properties();
-        FileInputStream fileInputStream;
+        InputStream inputStream;
         MysqlDataSource mysqlDataSource = null;
 
         try {
-            fileInputStream = new FileInputStream("database.properties");
-            properties.load(fileInputStream);
+            inputStream = DatasourceFactory.class.getClassLoader().getResourceAsStream("/database.properties");
+            properties.load(inputStream);
 
             mysqlDataSource = new MysqlDataSource();
             mysqlDataSource.setURL(properties.getProperty(DB_URL_PROPERTY));
