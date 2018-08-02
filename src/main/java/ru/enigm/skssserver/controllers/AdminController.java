@@ -17,4 +17,10 @@ public class AdminController extends HttpServlet {
             req.getRequestDispatcher("/login.jsp").forward(req,resp);
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPost(req, resp);
+
+    }
 }

@@ -89,7 +89,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute">
               </g>
             </svg>  
         </label>
-        <input type="password" name="password" id="name" placeholder="Password" />
+        <input type="password" name="password" id="password" placeholder="Password" />
       </div> 
      <div>
       <input type="submit" value="Sign in" />
