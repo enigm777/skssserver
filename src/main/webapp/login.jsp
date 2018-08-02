@@ -70,7 +70,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute">
     <h3 class="sign-in">Sign in</h3>
   </div>
    <div class="clear"></div> 
-  <form action="#" method="post">
+  <form action="login" method="post">
       <div>
          <label class="user" for="text">
            <svg viewBox="0 0 32 32">

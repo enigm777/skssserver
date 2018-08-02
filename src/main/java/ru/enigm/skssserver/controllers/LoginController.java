@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class LoginController extends HttpServlet {
 
-    private static final String USERNAME_PARAMETER = "username";
+    public static final String USERNAME_PARAMETER = "username";
     private static final String PASSWORD_PARAMETER = "password";
 
     private UserService userService = new UserServiceImpl(new UserRepositoryImpl());
@@ -28,7 +28,12 @@ public class LoginController extends HttpServlet {
         String password = req.getParameter(PASSWORD_PARAMETER);
 
         if (userService.checkPasswordAndLogin(username, password)){
+            resp.addHeader(USERNAME_PARAMETER, username);
+            resp.setContentType("text/html; charset=UTF-8");
+            resp.setCharacterEncoding("UTF-8");
             req.getRequestDispatcher("/admin.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("/error.jsp").forward(req, resp);
         }
         super.doPost(req, resp);
     }
