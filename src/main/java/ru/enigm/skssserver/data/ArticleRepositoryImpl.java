@@ -10,12 +10,13 @@ import ru.enigm.skssserver.model.Article;
  */
 public class ArticleRepositoryImpl implements ArticleRepository {
 
+    private ArticleDao articleDao = new ArticleDaoImpl();
 
     /**
      * {@inheritDoc}
      */
     @Override
     public long saveArticle(Article article) {
-        return 0;
+        return articleDao.saveArticle(article);
     }
 }
