@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-4 col-md-offset-4 well well-sm">
             <legend>Ввод статьи</legend>
-            <form action="#" method="post" class="form" role="form">
+            <form action="/admin" method="post" class="form" role="form">
                 <input class="form-control" name="title" placeholder="Заголовок статьи" type="text" />
                 <textarea name="article" id="message" class="form-control" rows="9" cols="25" required="required" placeholder="Текст статьи"></textarea>
                 <input class="form-control" name="picture_link" placeholder="URL картинки" type="text"/>

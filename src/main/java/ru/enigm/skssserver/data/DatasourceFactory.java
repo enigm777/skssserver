@@ -7,12 +7,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ * DB factory
+ *
+ * @author Ural Nigmatullin
+ */
 public class DatasourceFactory {
 
     private static final String DB_URL_PROPERTY = "DB_URL";
     private static final String DB_USER_PROPERTY = "DB_USER";
     private static final String DB_PASSWORD_PROPERTY = "DB_PASSWORD";
 
+    /**
+     * Get datasource
+     *
+     * @return datasource
+     */
     public static DataSource getMysqlDatasource() {
 
         Properties properties = new Properties();
@@ -27,7 +37,7 @@ public class DatasourceFactory {
             mysqlDataSource.setURL(properties.getProperty(DB_URL_PROPERTY));
             mysqlDataSource.setUser(properties.getProperty(DB_USER_PROPERTY));
             mysqlDataSource.setPassword(properties.getProperty(DB_PASSWORD_PROPERTY));
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
