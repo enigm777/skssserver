@@ -14,12 +14,19 @@ import java.sql.SQLException;
  */
 public class ArticleDaoImpl implements ArticleDao {
 
-    private static final String ARTICLE_INSERT_STATEMENT = "insert into post (title, content, post_date, picture_link)"
-            + " values (?, ?, ?, ?)";
+    private static final String TABLE_NAME = "posts";
     private static final String TITLE_COLUMN = "title";
     private static final String CONTENT_COLUMN = "content";
     private static final String POST_DATE_COLUMN = "post_date";
     private static final String PICTURE_LINK_COLUMN = "picture_link";
+
+    private static final String ARTICLE_INSERT_STATEMENT = "insert into "
+            + TABLE_NAME + "("
+            + TITLE_COLUMN + ","
+            + CONTENT_COLUMN + ","
+            + POST_DATE_COLUMN + ","
+            + PICTURE_LINK_COLUMN + ")"
+            + " values (?, ?, ?, ?)";
 
     /**
      * {@inheritDoc}

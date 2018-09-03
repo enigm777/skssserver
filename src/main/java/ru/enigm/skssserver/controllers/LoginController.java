@@ -35,6 +35,6 @@ public class LoginController extends HttpServlet {
         } else {
             req.getRequestDispatcher("/error.jsp").forward(req, resp);
         }
-        super.doPost(req, resp);
+        //super.doPost(req, resp);
     }
 }

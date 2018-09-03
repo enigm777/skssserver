@@ -41,9 +41,10 @@ public class AdminController extends HttpServlet {
         );
         boolean isSaveSuccess = articleService.saveArticle(article);
         if (isSaveSuccess){
+            req.setAttribute("message", "test");
             req.getRequestDispatcher("/success.jsp").forward(req, resp);
         } else {
-            req.getRequestDispatcher("/error.jsp").forward(req, resp);
+            req.getRequestDispatcher("/save_article_error.jsp").forward(req, resp);
         }
     }
 }
